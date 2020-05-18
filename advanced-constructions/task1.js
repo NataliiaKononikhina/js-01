@@ -1,5 +1,3 @@
-const arr = [91, 93, 45, -67, -96, -40, 34, -96, 42, -58];
-
 const getSumAndCount = arr => {
     const count = arr.filter(item => item < 0).length;
     const sum = arr.reduce((acc, curr) => {
@@ -10,21 +8,16 @@ const getSumAndCount = arr => {
         count: count,
         sum: sum,
     }
-}
+};
 
 const getSumAndCount2 = arr => {
-    arr.reduce((acc, curr) => {
-        let count;
-
+    return arr.reduce((acc, curr) => {
         if (curr < 0) {
-            count++;
+            acc.count += 1;
         }
 
-        const sum = acc + curr;
+        acc.sum = acc.sum + curr;
 
-        return {
-            sum: sum,
-            count: count,
-        };
-    })
-}
+        return acc;
+    }, {sum: 0, count: 0});
+};
